@@ -10,7 +10,7 @@ public class project_main {
 		// TODO Auto-generated method stub
 		LogIn log=new LogIn();
 		String id=log.scrLogin();
-		if(id.equals("Admin")) {
+		if(id.equals("admin")) {
 			MemController MCr=new MemController();
 			MCr.setProgram();
 		}

@@ -72,7 +72,7 @@ public class LogIn {
 						boo = false;
 						
 						if(adname.equals(members.getName(0))) {
-							return "Admin";
+							return "admin";
 						}
 						else {
 							return adname;

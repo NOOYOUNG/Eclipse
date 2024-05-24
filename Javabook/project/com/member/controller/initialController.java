@@ -41,7 +41,7 @@ public class initialController implements ManageLogin{
 				readMember(id);
 				break;
 			case 2:
-				updateMember(id);
+				id=updateMember(id);
 				break;
 			case 3:
 				deleteMember(id);
@@ -69,13 +69,14 @@ public class initialController implements ManageLogin{
 					System.out.println(part[0]);
 				}
 			}
+			br.close();
 		} catch(Exception e) {
 			System.out.println(e);
 		}
 	}
 	
 	@Override
-	public void updateMember(String id) {
+	public String updateMember(String id) {
 		File file=new File("memberList.txt");
 		
 		try {
@@ -101,7 +102,6 @@ public class initialController implements ManageLogin{
 						part[1]=rename.isEmpty()? part[1]:rename;
 						part[2]=rephone.isEmpty()? part[2]:rephone;
 						part[3]=readdr.isEmpty()? part[3]:readdr;
-						System.out.println(part[0]);
 						updated.append(part[0]).append("\t");
 						updated.append("이름: ").append(part[1]).append("\t");
 						updated.append("연락처: ").append(part[2]).append("\t");
@@ -110,7 +110,7 @@ public class initialController implements ManageLogin{
 						
 						int num=Integer.parseInt(part[0].split(": ")[1]);
 						members.setMember(num, part[1], part[2], part[3], enterpwd);
-						id=rename;
+						id=part[1];
 					} else {
 						updated.append(line).append("\n");
 						System.out.println("비밀번호가 일치하지 않습니다.");
@@ -127,6 +127,8 @@ public class initialController implements ManageLogin{
 		} catch(Exception e) {
 			System.out.println(e);
 		}
+		
+		return id;
 	}
 	
 	@Override
@@ -144,10 +146,10 @@ public class initialController implements ManageLogin{
 				if(line.contains(id)) {
 					System.out.print("비밀번호를 입력하세요: ");
 					String enterpwd=s.nextLine();
+					s.nextLine();
 					
 					if(line.contains(enterpwd)) {
 						line=null;
-						updated.append(line).append("\n");
 					} else {
 						updated.append(line).append("\n");
 						System.out.println("비밀번호가 일치하지 않습니다.");

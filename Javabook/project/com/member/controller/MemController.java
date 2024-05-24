@@ -221,7 +221,7 @@ public class MemController extends ManageMem{
 	void fileMember() {
 		for(int i=0; i<100; i++) {
 			if(members.getNum(i)!=0 && members.getName(i)!=null) {
-				System.out.println("회원번호 "+members.getNum(i)+"\t이름 "+members.getName(i)+"\t연락처 "+members.getPhone(i)+"\t주소"+members.getAddr(i)+"\t비밀번호: "+members.getPwd(i));
+				System.out.println("회원번호 "+members.getNum(i)+"\t이름 "+members.getName(i)+"\t연락처 "+members.getPhone(i)+"\t주소: "+members.getAddr(i)+"\t비밀번호: "+members.getPwd(i));
 			}
 		}
 	}
@@ -234,7 +234,7 @@ public class MemController extends ManageMem{
 			if(!file.exists())
 				file.createNewFile();
 			
-			FileWriter fw=new FileWriter(file);
+			FileWriter fw=new FileWriter(file, true);
 			
 			for(int i=0; i<100; i++) {
 				if(members.getNum(i)!=0 && members.getName(i)!=null) 
