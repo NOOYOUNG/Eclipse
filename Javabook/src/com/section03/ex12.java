@@ -1,0 +1,16 @@
+package com.section03;
+import java.util.Random;
+public class ex12 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Random random1=new Random();
+		System.out.println("난수값: "+random1.nextInt());
+		Random random2=new Random();
+		for(int i=0; i<10; i++) {
+			System.out.print(random2.nextInt(100)+" ");
+		}
+
+	}
+
+}
