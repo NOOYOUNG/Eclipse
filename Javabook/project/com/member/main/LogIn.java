@@ -49,11 +49,12 @@ public class LogIn {
 	}
 
 	String scrLogin() {
-		boolean boo = true;
-		boolean log=true;
+		boolean logboolean=true;
 		int cnt = 0;
-
-		while (boo) {
+		
+		while (logboolean) {
+			boolean idFound=false;
+			
 			System.out.println("***************************************");
 			System.out.println("\t\t로그인");
 			System.out.println("***************************************");
@@ -63,13 +64,13 @@ public class LogIn {
 
 			for(int i=0; i<100; i++) {
 				if (adname.equals(members.getName(i))) {
+					idFound=true;
 					System.out.print("비밀번호를 입력하세요: ");
 					String adpwd = s.nextLine();
-					log=true;
 
 					if (adpwd.equals(members.getPwd(i))) {
 						System.out.println("로그인 성공");
-						boo = false;
+						logboolean=false;
 						
 						if(adname.equals(members.getName(0))) {
 							return "admin";
@@ -77,27 +78,24 @@ public class LogIn {
 						else {
 							return adname;
 						}
-						
 					} else {
 						System.out.println("비밀번호가 틀렸습니다.");
 						cnt++;
 					}
-				} else {
-					log=false;
-				}
+				} 
 			}
 			
-			if(!log) {
+			if(!idFound) {
 				System.out.println("일치하는 아이디가 없습니다.");
 			}
 			
-
 			if (cnt == 3) {
 				System.out.println("로그인 횟수 초과");
 				break;
 			}
-
+			
 		}
+		
 		return "none";
 	}
 
